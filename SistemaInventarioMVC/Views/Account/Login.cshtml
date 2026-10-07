@@ -4,6 +4,10 @@
     ViewBag.Title = "Iniciar sesión";
 }
 
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
 <h2>Iniciar sesión</h2>
 
 @using (Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
@@ -24,4 +28,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Ingresar</button>
+    <p>@Html.ActionLink("¿No tienes cuenta? Regístrate", "Create", "Usuarios")</p>
 }

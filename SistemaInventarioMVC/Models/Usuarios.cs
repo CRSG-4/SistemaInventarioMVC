@@ -6,6 +6,7 @@
 //     Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaInventarioMVC.Models
 {
@@ -15,8 +16,15 @@ namespace SistemaInventarioMVC.Models
     public partial class Usuarios
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Nombre { get; set; }
+        [Required]
+        [EmailAddress]
+        [StringLength(150)]
         public string Correo { get; set; }
+        [Required]
+        [StringLength(500)]
         public string PasswordHash { get; set; }
         public bool Activo { get; set; }
     }

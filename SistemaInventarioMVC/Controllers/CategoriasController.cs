@@ -10,6 +10,7 @@ using SistemaInventarioMVC.Models;
 
 namespace SistemaInventarioMVC.Controllers
 {
+    [Authorize]
     public class CategoriasController : Controller
     {
         private SistemaInventarioDBEntities db = new SistemaInventarioDBEntities();
