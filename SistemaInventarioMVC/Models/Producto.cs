@@ -6,6 +6,8 @@
 //     Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaInventarioMVC.Models
 {
@@ -15,13 +17,26 @@ namespace SistemaInventarioMVC.Models
     public partial class Producto
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "El código es obligatorio")]
+        [StringLength(30)]
         public string Codigo { get; set; }
+        [Required(ErrorMessage = "El nombre es obligatorio")]
+        [StringLength(120)]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "El precio es obligatorio")]
+        [Range(0.01, 999999, ErrorMessage = "El precio debe ser mayor a 0")]
+        [Column(TypeName = "decimal")]
         public decimal Precio { get; set; }
+        [Required(ErrorMessage = "La existencia es obligatoria")]
+        [Range(0, int.MaxValue, ErrorMessage = "La existencia no puede ser negativa")
         public int Existencia { get; set; }
+        [Required(ErrorMessage = "Seleccione una categoría")]
+        [Display(Name = "Categoría")]
         public Nullable<int> CategoriaId { get; set; }
         public bool Activo { get; set; }
-    
+        [StringLength(250)]
+        public string Descripcion { get; set; }
+        [ForeignKey("CategoriaId")]
         public virtual Categoria Categoria { get; set; }
     }
 }
