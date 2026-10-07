@@ -28,7 +28,7 @@ namespace SistemaInventarioMVC.Models
         [Column(TypeName = "decimal")]
         public decimal Precio { get; set; }
         [Required(ErrorMessage = "La existencia es obligatoria")]
-        [Range(0, int.MaxValue, ErrorMessage = "La existencia no puede ser negativa")
+        [Range(0, int.MaxValue, ErrorMessage = "La existencia no puede ser negativa")]
         public int Existencia { get; set; }
         [Required(ErrorMessage = "Seleccione una categoría")]
         [Display(Name = "Categoría")]
